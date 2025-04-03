@@ -1,0 +1,183 @@
+/* Definições gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* Usando apenas uma fonte */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Alterado para evitar cortes em telas menores */
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    background-color: #1e1e1e;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+    letter-spacing: 1.5px;
+}
+
+/* Tabela */
+.agenda-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.agenda-table th, .agenda-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+    font-size: 1rem;
+}
+
+.agenda-table th {
+    background-color: #2a2a2a;
+    font-weight: 600;
+}
+
+.agenda-table td {
+    background-color: #1f1f1f;
+}
+
+/* Efeito de hover nas linhas da tabela */
+.agenda-table tr {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.agenda-table tr:hover {
+    background-color: #444;
+    transform: scale(1.02);
+}
+
+.agenda-table tr:nth-child(odd) {
+    background-color: #2a2a2a;
+}
+
+.agenda-table tr:nth-child(even) {
+    background-color: #1f1f1f;
+}
+
+/* Mensagem caso não haja agendas */
+.no-agendas {
+    text-align: center;
+    color: #f44336;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+/* Definir tamanho mínimo para evitar colunas muito estreitas (1 a 9) */
+.agenda-table th:nth-child(-n+9),
+.agenda-table td:nth-child(-n+9) {
+    min-width: 140px; /* Ajuste conforme necessário */
+    word-wrap: break-word; /* Permite quebra de linha */
+    white-space: normal; /* Garante que o texto quebre quando necessário */
+}
+        /* Estiliza o tooltip */
+.tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 180px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 6px;
+    border-radius: 6px;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: normal; /* Permite a quebra de linha */
+    word-wrap: break-word; /* Garante que o texto não ultrapasse os limites */
+}
+
+/* Exibe o tooltip ao passar o mouse */
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+th input {
+    width: 100%;
+    padding: 5px;
+    background: #333; /* Preto fosco */
+    color: #ddd; /* Cinza claro para contraste */
+    border: 1px solid #444; /* Borda cinza escuro */
+    outline: none;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px; /* Espaço entre o input e o label */
+}
+
+th input::placeholder {
+    color: #666; /* Cinza médio para o placeholder */
+}
+
+th input:focus {
+    background: #222; /* Cinza escuro ao focar */
+    border-color: #888; /* Cinza mais claro para destacar */
+}
+.acoes-agenda {
+    display: flex;
+    gap: 10px; /* Espaço entre os botões */
+}
+
+.btn-editar, .btn-excluir {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #1a1a1a; /* Preto fosco */
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-editar:hover, .btn-excluir:hover {
+    background-color: #333333; /* Cinza escuro ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento no tamanho */
+}
+
+#loading-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    color: #fff;
+    z-index: 9999;
+}
+
+#loading-circle {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
